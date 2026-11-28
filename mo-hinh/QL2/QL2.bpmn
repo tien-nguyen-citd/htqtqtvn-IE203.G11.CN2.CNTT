@@ -1,0 +1,1358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_QL2" targetNamespace="http://bpmn.io/schema/bpmn" exporter="coursework/tools/bpmn/builder.ts" exporterVersion="1.0">
+  <bpmn:collaboration id="QL2">
+    <bpmn:participant id="P_Hang" name="Vietnam Airlines" processRef="P_Hang_Process" />
+  </bpmn:collaboration>
+  <bpmn:process id="P_Hang_Process" isExecutable="false">
+    <bpmn:laneSet id="P_Hang_Process_LaneSet">
+      <bpmn:lane id="L_ThanhVien" name="Thành viên HĐQT và đầu mối đề nghị">
+        <bpmn:flowNodeRef>S</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>B1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>C9</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>B38</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>M9</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>B5</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>K1a</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>K1b</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L_ChuTich" name="Chủ tịch HĐQT">
+        <bpmn:flowNodeRef>B2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>C2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>M2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>K5</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>B10</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>B12</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>D3</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L_ThuKy" name="Thư ký cuộc họp">
+        <bpmn:flowNodeRef>B6</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>D1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>B7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>C7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>B8</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>M7</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>K3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>B11</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>D2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>K2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>K4</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="S" name="Đề nghị họp về chủ trương, chính sách đã được tiếp nhận">
+      <bpmn:outgoing>F_S_B1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="B1" name="Kiểm tra đề nghị họp về chủ trương, chính sách">
+      <bpmn:incoming>F_S_B1</bpmn:incoming>
+      <bpmn:outgoing>F_B1_C9</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="C9" name="Nội dung thuộc thẩm quyền của ai?">
+      <bpmn:incoming>F_B1_C9</bpmn:incoming>
+      <bpmn:outgoing>F_C9_M9</bpmn:outgoing>
+      <bpmn:outgoing>F_C9_B38</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="B38" name="Lập tờ trình Đại hội đồng cổ đông">
+      <bpmn:incoming>F_C9_B38</bpmn:incoming>
+      <bpmn:outgoing>F_B38_M9</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="M9" name="Hồ sơ đã được chuẩn bị theo thẩm quyền">
+      <bpmn:incoming>F_C9_M9</bpmn:incoming>
+      <bpmn:incoming>F_B38_M9</bpmn:incoming>
+      <bpmn:outgoing>F_M9_B2</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:subProcess id="B2" name="Xác định tình trạng triệu tập cuộc họp theo đề nghị">
+      <bpmn:documentation>B35 ghi kết quả đối chiếu thời hạn và trả kết quả qua Z1. C2 xác định Chủ tịch đã triệu tập đúng hạn hay đã quá hạn và xét việc người đề nghị có thực hiện quyền thay thế.</bpmn:documentation>
+      <bpmn:incoming>F_M9_B2</bpmn:incoming>
+      <bpmn:outgoing>F_B2_C2</bpmn:outgoing>
+      <bpmn:laneSet id="Lanes_B2">
+        <bpmn:lane id="L_B2_1" name="Chủ tịch HĐQT">
+          <bpmn:flowNodeRef>S1</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>B13</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>C1</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>B14</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>B15</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>M1</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>B35</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>Z1</bpmn:flowNodeRef>
+        </bpmn:lane>
+        <bpmn:lane id="L_B2_2" name="Thành viên HĐQT và đầu mối đề nghị">
+          <bpmn:flowNodeRef>B16</bpmn:flowNodeRef>
+        </bpmn:lane>
+      </bpmn:laneSet>
+      <bpmn:startEvent id="S1" name="Đề nghị họp hợp lệ đã được xác nhận">
+        <bpmn:outgoing>F_S1_B13</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:task id="B13" name="Kiểm tra người có thể thực hiện quyền chủ tịch">
+        <bpmn:incoming>F_S1_B13</bpmn:incoming>
+        <bpmn:outgoing>F_B13_C1</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:exclusiveGateway id="C1" name="Ai giữ quyền Chủ tịch?">
+        <bpmn:incoming>F_B13_C1</bpmn:incoming>
+        <bpmn:outgoing>F_C1_B14</bpmn:outgoing>
+        <bpmn:outgoing>F_C1_B15</bpmn:outgoing>
+        <bpmn:outgoing>F_C1_B16</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:task id="B14" name="Xác nhận Chủ tịch thực hiện nhiệm vụ triệu tập">
+        <bpmn:incoming>F_C1_B14</bpmn:incoming>
+        <bpmn:outgoing>F_B14_M1</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="B15" name="Xác nhận văn bản ủy quyền thực hiện nhiệm vụ chủ tịch">
+        <bpmn:incoming>F_C1_B15</bpmn:incoming>
+        <bpmn:outgoing>F_B15_M1</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="B16" name="Bầu thành viên tạm giữ chức Chủ tịch HĐQT">
+        <bpmn:incoming>F_C1_B16</bpmn:incoming>
+        <bpmn:outgoing>F_B16_M1</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:exclusiveGateway id="M1" name="Tình trạng người thực hiện quyền chủ tịch đã được ghi">
+        <bpmn:incoming>F_B14_M1</bpmn:incoming>
+        <bpmn:incoming>F_B15_M1</bpmn:incoming>
+        <bpmn:incoming>F_B16_M1</bpmn:incoming>
+        <bpmn:outgoing>F_M1_B35</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:task id="B35" name="Đối chiếu việc triệu tập họp trong thời hạn">
+        <bpmn:incoming>F_M1_B35</bpmn:incoming>
+        <bpmn:outgoing>F_B35_Z1</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:endEvent id="Z1" name="Kết quả đối chiếu thời hạn triệu tập đã được ghi nhận">
+        <bpmn:incoming>F_B35_Z1</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="F_S1_B13" sourceRef="S1" targetRef="B13" />
+      <bpmn:sequenceFlow id="F_B13_C1" sourceRef="B13" targetRef="C1" />
+      <bpmn:sequenceFlow id="F_C1_B14" name="Chủ tịch" sourceRef="C1" targetRef="B14">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Chủ tịch</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="F_C1_B15" name="Có văn bản ủy quyền" sourceRef="C1" targetRef="B15">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Có văn bản ủy quyền</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="F_C1_B16" name="Bầu người tạm giữ chức" sourceRef="C1" targetRef="B16">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Bầu người tạm giữ chức</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="F_B14_M1" sourceRef="B14" targetRef="M1" />
+      <bpmn:sequenceFlow id="F_B15_M1" sourceRef="B15" targetRef="M1" />
+      <bpmn:sequenceFlow id="F_B16_M1" sourceRef="B16" targetRef="M1" />
+      <bpmn:sequenceFlow id="F_M1_B35" sourceRef="M1" targetRef="B35" />
+      <bpmn:sequenceFlow id="F_B35_Z1" sourceRef="B35" targetRef="Z1" />
+    </bpmn:subProcess>
+    <bpmn:exclusiveGateway id="C2" name="Ai triệu tập?">
+      <bpmn:incoming>F_B2_C2</bpmn:incoming>
+      <bpmn:outgoing>F_C2_M2</bpmn:outgoing>
+      <bpmn:outgoing>F_C2_B5</bpmn:outgoing>
+      <bpmn:outgoing>F_C2_K5</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="B5" name="Chuẩn bị hồ sơ và gửi thông báo theo quyền thay thế">
+      <bpmn:incoming>F_C2_B5</bpmn:incoming>
+      <bpmn:outgoing>F_B5_M2</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="M2" name="Cuộc họp đã được triệu tập">
+      <bpmn:incoming>F_C2_M2</bpmn:incoming>
+      <bpmn:incoming>F_B5_M2</bpmn:incoming>
+      <bpmn:outgoing>F_M2_B6</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="K5" name="Cuộc họp theo đề nghị đã không được triệu tập">
+      <bpmn:incoming>F_C2_K5</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:subProcess id="B6" name="Xác định điều kiện tiến hành cuộc họp HĐQT">
+      <bpmn:documentation>Trả kết quả đủ điều kiện ở lần thứ nhất hoặc lần thứ hai, hoặc lần thứ hai không đủ điều kiện. Đ1 chỉ cho kiểm phiếu khi một lần họp đủ điều kiện tiến hành.</bpmn:documentation>
+      <bpmn:incoming>F_M2_B6</bpmn:incoming>
+      <bpmn:outgoing>F_B6_D1</bpmn:outgoing>
+      <bpmn:laneSet id="Lanes_B6">
+        <bpmn:lane id="L_B6_1" name="Chủ tịch HĐQT">
+          <bpmn:flowNodeRef>B18</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>B20</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>B34</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>Z2a</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>Z2b</bpmn:flowNodeRef>
+        </bpmn:lane>
+        <bpmn:lane id="L_B6_2" name="Thư ký cuộc họp">
+          <bpmn:flowNodeRef>S2</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>B17</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>B19</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>C5</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>C6</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>Z3</bpmn:flowNodeRef>
+        </bpmn:lane>
+      </bpmn:laneSet>
+      <bpmn:startEvent id="S2" name="Thông báo họp HĐQT đã được gửi">
+        <bpmn:outgoing>F_S2_B17</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:callActivity id="B17" name="Ghi tư cách thành viên dự họp lần thứ nhất" calledElement="Process_TuCach">
+        <bpmn:documentation>Tổng hợp số thành viên đủ tư cách của lần họp sau khi xét lần lượt từng thành viên.</bpmn:documentation>
+      <bpmn:incoming>F_S2_B17</bpmn:incoming>
+      <bpmn:outgoing>F_B17_C5</bpmn:outgoing>
+        <bpmn:ioSpecification>
+          <bpmn:dataInput id="DanhSachThanhVien_B17" name="Danh sách thành viên dự họp" isCollection="true" />
+          <bpmn:inputSet><bpmn:dataInputRefs>DanhSachThanhVien_B17</bpmn:dataInputRefs></bpmn:inputSet>
+          <bpmn:outputSet />
+        </bpmn:ioSpecification>
+        <bpmn:multiInstanceLoopCharacteristics id="MI_B17" isSequential="true">
+          <bpmn:loopDataInputRef>DanhSachThanhVien_B17</bpmn:loopDataInputRef>
+          <bpmn:inputDataItem id="ThanhVien_B17" name="Thành viên dự họp" />
+        </bpmn:multiInstanceLoopCharacteristics>
+      </bpmn:callActivity>
+      <bpmn:callActivity id="B19" name="Ghi tư cách thành viên dự họp lần thứ hai" calledElement="Process_TuCach">
+        <bpmn:documentation>Tổng hợp số thành viên đủ tư cách của lần họp sau khi xét lần lượt từng thành viên.</bpmn:documentation>
+      <bpmn:incoming>F_B18_B19</bpmn:incoming>
+      <bpmn:outgoing>F_B19_C6</bpmn:outgoing>
+        <bpmn:ioSpecification>
+          <bpmn:dataInput id="DanhSachThanhVien_B19" name="Danh sách thành viên dự họp" isCollection="true" />
+          <bpmn:inputSet><bpmn:dataInputRefs>DanhSachThanhVien_B19</bpmn:dataInputRefs></bpmn:inputSet>
+          <bpmn:outputSet />
+        </bpmn:ioSpecification>
+        <bpmn:multiInstanceLoopCharacteristics id="MI_B19" isSequential="true">
+          <bpmn:loopDataInputRef>DanhSachThanhVien_B19</bpmn:loopDataInputRef>
+          <bpmn:inputDataItem id="ThanhVien_B19" name="Thành viên dự họp" />
+        </bpmn:multiInstanceLoopCharacteristics>
+      </bpmn:callActivity>
+      <bpmn:task id="B18" name="Triệu tập cuộc họp HĐQT lần thứ hai">
+        <bpmn:incoming>F_C5_B18</bpmn:incoming>
+        <bpmn:outgoing>F_B18_B19</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="B20" name="Xác nhận lần họp thứ nhất đủ điều kiện tiến hành">
+        <bpmn:incoming>F_C5_B20</bpmn:incoming>
+        <bpmn:outgoing>F_B20_Z2a</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="B34" name="Xác nhận lần họp thứ hai đủ điều kiện tiến hành">
+        <bpmn:incoming>F_C6_B34</bpmn:incoming>
+        <bpmn:outgoing>F_B34_Z2b</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:exclusiveGateway id="C5" name="Lần đầu đủ 3/4?">
+        <bpmn:incoming>F_B17_C5</bpmn:incoming>
+        <bpmn:outgoing>F_C5_B20</bpmn:outgoing>
+        <bpmn:outgoing>F_C5_B18</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:exclusiveGateway id="C6" name="Lần hai có hơn một nửa?">
+        <bpmn:incoming>F_B19_C6</bpmn:incoming>
+        <bpmn:outgoing>F_C6_B34</bpmn:outgoing>
+        <bpmn:outgoing>F_C6_Z3</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:endEvent id="Z2a" name="Lần họp thứ nhất đã đủ điều kiện tiến hành">
+        <bpmn:incoming>F_B20_Z2a</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:endEvent id="Z2b" name="Lần họp thứ hai đã đủ điều kiện tiến hành">
+        <bpmn:incoming>F_B34_Z2b</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:endEvent id="Z3" name="Lần họp thứ hai đã không đủ điều kiện tiến hành">
+        <bpmn:incoming>F_C6_Z3</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="F_S2_B17" sourceRef="S2" targetRef="B17" />
+      <bpmn:sequenceFlow id="F_B17_C5" sourceRef="B17" targetRef="C5" />
+      <bpmn:sequenceFlow id="F_C5_B20" name="Từ 3/4" sourceRef="C5" targetRef="B20">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Từ 3/4</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="F_C5_B18" name="Dưới 3/4" sourceRef="C5" targetRef="B18">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Dưới 3/4</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="F_B20_Z2a" sourceRef="B20" targetRef="Z2a" />
+      <bpmn:sequenceFlow id="F_B18_B19" sourceRef="B18" targetRef="B19" />
+      <bpmn:sequenceFlow id="F_B19_C6" sourceRef="B19" targetRef="C6" />
+      <bpmn:sequenceFlow id="F_C6_B34" name="Hơn một nửa" sourceRef="C6" targetRef="B34">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Hơn một nửa</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="F_C6_Z3" name="Tối đa một nửa" sourceRef="C6" targetRef="Z3">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Tối đa một nửa</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="F_B34_Z2b" sourceRef="B34" targetRef="Z2b" />
+    </bpmn:subProcess>
+    <bpmn:exclusiveGateway id="D1" name="Đủ điều kiện?">
+      <bpmn:incoming>F_B6_D1</bpmn:incoming>
+      <bpmn:outgoing>F_D1_B7</bpmn:outgoing>
+      <bpmn:outgoing>F_D1_K3</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="B7" name="Kiểm phiếu biểu quyết tại cuộc họp HĐQT">
+      <bpmn:incoming>F_D1_B7</bpmn:incoming>
+      <bpmn:outgoing>F_B7_C7</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="C7" name="Kết quả biểu quyết ra sao?">
+      <bpmn:incoming>F_B7_C7</bpmn:incoming>
+      <bpmn:outgoing>F_C7_B10</bpmn:outgoing>
+      <bpmn:outgoing>F_C7_B8</bpmn:outgoing>
+      <bpmn:outgoing>F_C7_M7</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="B10" name="Xác định kết quả theo ý kiến của Chủ tịch HĐQT">
+      <bpmn:incoming>F_C7_B10</bpmn:incoming>
+      <bpmn:outgoing>F_B10_M7</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="B8" name="Xác nhận kết quả thông qua đề nghị">
+      <bpmn:incoming>F_C7_B8</bpmn:incoming>
+      <bpmn:outgoing>F_B8_M7</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="M7" name="Kết quả biểu quyết chủ trương, chính sách đã được xác định">
+      <bpmn:incoming>F_C7_M7</bpmn:incoming>
+      <bpmn:incoming>F_B10_M7</bpmn:incoming>
+      <bpmn:incoming>F_B8_M7</bpmn:incoming>
+      <bpmn:outgoing>F_M7_B11</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="K3" name="Cuộc họp lần thứ hai đã không được tiến hành">
+      <bpmn:incoming>F_D1_K3</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:subProcess id="B11" name="Lập và đối chiếu biên bản cuộc họp HĐQT">
+      <bpmn:documentation>Trả trạng thái biên bản đủ hoặc không đủ điều kiện ký. Đ2 kiểm tra trạng thái biên bản trước rồi mới xét kết quả biểu quyết đã ghi.</bpmn:documentation>
+      <bpmn:incoming>F_M7_B11</bpmn:incoming>
+      <bpmn:outgoing>F_B11_D2</bpmn:outgoing>
+      <bpmn:laneSet id="Lanes_B11">
+        <bpmn:lane id="L_B11_1" name="Thư ký cuộc họp">
+          <bpmn:flowNodeRef>S4</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>B27</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>C8</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>B28</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>B29</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>M8</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>B33</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>D7</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>Z5</bpmn:flowNodeRef>
+          <bpmn:flowNodeRef>Z5b</bpmn:flowNodeRef>
+        </bpmn:lane>
+      </bpmn:laneSet>
+      <bpmn:startEvent id="S4" name="Kết quả biểu quyết đã được xác định">
+        <bpmn:outgoing>F_S4_B27</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:task id="B27" name="Soạn biên bản cuộc họp HĐQT">
+        <bpmn:incoming>F_S4_B27</bpmn:incoming>
+        <bpmn:outgoing>F_B27_C8</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:exclusiveGateway id="C8" name="Chủ tọa và người ghi biên bản cùng ký?">
+        <bpmn:incoming>F_B27_C8</bpmn:incoming>
+        <bpmn:outgoing>F_C8_B28</bpmn:outgoing>
+        <bpmn:outgoing>F_C8_B29</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:task id="B28" name="Hoàn tất chữ ký của chủ tọa và người ghi biên bản">
+        <bpmn:incoming>F_C8_B28</bpmn:incoming>
+        <bpmn:outgoing>F_B28_M8</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:task id="B29" name="Thu chữ ký thay thế và đối chiếu nội dung biên bản">
+        <bpmn:incoming>F_C8_B29</bpmn:incoming>
+        <bpmn:outgoing>F_B29_M8</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:exclusiveGateway id="M8" name="Tình trạng chữ ký biên bản đã được ghi nhận">
+        <bpmn:incoming>F_B28_M8</bpmn:incoming>
+        <bpmn:incoming>F_B29_M8</bpmn:incoming>
+        <bpmn:outgoing>F_M8_B33</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:task id="B33" name="Lưu biên bản và tài liệu cuộc họp">
+        <bpmn:incoming>F_M8_B33</bpmn:incoming>
+        <bpmn:outgoing>F_B33_D7</bpmn:outgoing>
+      </bpmn:task>
+      <bpmn:exclusiveGateway id="D7" name="Biên bản đủ điều kiện ký?">
+        <bpmn:incoming>F_B33_D7</bpmn:incoming>
+        <bpmn:outgoing>F_D7_Z5</bpmn:outgoing>
+        <bpmn:outgoing>F_D7_Z5b</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:endEvent id="Z5" name="Biên bản cuộc họp đã đủ điều kiện ký">
+        <bpmn:incoming>F_D7_Z5</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:endEvent id="Z5b" name="Biên bản cuộc họp đã không đủ điều kiện ký">
+        <bpmn:incoming>F_D7_Z5b</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:sequenceFlow id="F_S4_B27" sourceRef="S4" targetRef="B27" />
+      <bpmn:sequenceFlow id="F_B27_C8" sourceRef="B27" targetRef="C8" />
+      <bpmn:sequenceFlow id="F_C8_B28" name="Cùng ký" sourceRef="C8" targetRef="B28">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Cùng ký</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="F_C8_B29" name="Từ chối ký" sourceRef="C8" targetRef="B29">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Từ chối ký</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="F_B28_M8" sourceRef="B28" targetRef="M8" />
+      <bpmn:sequenceFlow id="F_B29_M8" sourceRef="B29" targetRef="M8" />
+      <bpmn:sequenceFlow id="F_M8_B33" sourceRef="M8" targetRef="B33" />
+      <bpmn:sequenceFlow id="F_B33_D7" sourceRef="B33" targetRef="D7" />
+      <bpmn:sequenceFlow id="F_D7_Z5" name="Đủ điều kiện ký" sourceRef="D7" targetRef="Z5">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Đủ điều kiện ký</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="F_D7_Z5b" name="Không đủ điều kiện ký" sourceRef="D7" targetRef="Z5b">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Không đủ điều kiện ký</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+    </bpmn:subProcess>
+    <bpmn:exclusiveGateway id="D2" name="Kết quả biên bản và biểu quyết?">
+      <bpmn:incoming>F_B11_D2</bpmn:incoming>
+      <bpmn:outgoing>F_D2_K2</bpmn:outgoing>
+      <bpmn:outgoing>F_D2_K4</bpmn:outgoing>
+      <bpmn:outgoing>F_D2_B12</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="K2" name="Đề nghị đã không được HĐQT thông qua">
+      <bpmn:incoming>F_D2_K2</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="K4" name="Biên bản cuộc họp đã không đủ điều kiện ký">
+      <bpmn:incoming>F_D2_K4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:task id="B12" name="Ký và chuyển hồ sơ quyết nghị HĐQT">
+      <bpmn:incoming>F_D2_B12</bpmn:incoming>
+      <bpmn:outgoing>F_B12_D3</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="D3" name="Loại nghị quyết đã ký?">
+      <bpmn:incoming>F_B12_D3</bpmn:incoming>
+      <bpmn:outgoing>F_D3_K1a</bpmn:outgoing>
+      <bpmn:outgoing>F_D3_K1b</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="K1a" name="Nghị quyết đã được chuyển Tổng giám đốc thực hiện">
+      <bpmn:incoming>F_D3_K1a</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:endEvent id="K1b" name="Tờ trình đã được chuyển Đại hội đồng cổ đông">
+      <bpmn:incoming>F_D3_K1b</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_S_B1" sourceRef="S" targetRef="B1" />
+    <bpmn:sequenceFlow id="F_B1_C9" sourceRef="B1" targetRef="C9" />
+    <bpmn:sequenceFlow id="F_C9_M9" name="Thuộc HĐQT" sourceRef="C9" targetRef="M9">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Thuộc HĐQT</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_C9_B38" name="Thuộc ĐHĐCĐ" sourceRef="C9" targetRef="B38">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Thuộc ĐHĐCĐ</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_B38_M9" sourceRef="B38" targetRef="M9" />
+    <bpmn:sequenceFlow id="F_M9_B2" sourceRef="M9" targetRef="B2" />
+    <bpmn:sequenceFlow id="F_B2_C2" sourceRef="B2" targetRef="C2" />
+    <bpmn:sequenceFlow id="F_C2_M2" name="Chủ tịch đúng hạn" sourceRef="C2" targetRef="M2">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Chủ tịch đúng hạn</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_C2_B5" name="Quá hạn, triệu tập thay" sourceRef="C2" targetRef="B5">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Quá hạn, triệu tập thay</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_B5_M2" sourceRef="B5" targetRef="M2" />
+    <bpmn:sequenceFlow id="F_C2_K5" name="Quá hạn, không triệu tập thay" sourceRef="C2" targetRef="K5">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Quá hạn, không triệu tập thay</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_M2_B6" sourceRef="M2" targetRef="B6" />
+    <bpmn:sequenceFlow id="F_B6_D1" sourceRef="B6" targetRef="D1" />
+    <bpmn:sequenceFlow id="F_D1_B7" name="Đủ" sourceRef="D1" targetRef="B7">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Đủ</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_D1_K3" name="Lần hai thiếu" sourceRef="D1" targetRef="K3">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Lần hai thiếu</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_B7_C7" sourceRef="B7" targetRef="C7" />
+    <bpmn:sequenceFlow id="F_C7_B10" name="Ngang phiếu" sourceRef="C7" targetRef="B10">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Ngang phiếu</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_C7_B8" name="Đa số tán thành" sourceRef="C7" targetRef="B8">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Đa số tán thành</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_C7_M7" name="Không đủ đa số" sourceRef="C7" targetRef="M7">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Không đủ đa số</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_B10_M7" sourceRef="B10" targetRef="M7" />
+    <bpmn:sequenceFlow id="F_B8_M7" sourceRef="B8" targetRef="M7" />
+    <bpmn:sequenceFlow id="F_M7_B11" sourceRef="M7" targetRef="B11" />
+    <bpmn:sequenceFlow id="F_B11_D2" sourceRef="B11" targetRef="D2" />
+    <bpmn:sequenceFlow id="F_D2_K2" name="Biên bản hợp lệ, đề nghị bị bác" sourceRef="D2" targetRef="K2">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Biên bản hợp lệ, đề nghị bị bác</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_D2_K4" name="Không đủ điều kiện ký" sourceRef="D2" targetRef="K4">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Không đủ điều kiện ký</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_D2_B12" name="Biên bản hợp lệ, đề nghị được duyệt" sourceRef="D2" targetRef="B12">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Biên bản hợp lệ, đề nghị được duyệt</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_B12_D3" sourceRef="B12" targetRef="D3" />
+    <bpmn:sequenceFlow id="F_D3_K1a" name="Quyết định nội dung" sourceRef="D3" targetRef="K1a">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Quyết định nội dung</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_D3_K1b" name="Thông qua việc trình" sourceRef="D3" targetRef="K1b">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Thông qua việc trình</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+  </bpmn:process>
+  <bpmn:process id="Process_TuCach" name="Ghi tư cách thành viên dự họp" isExecutable="false">
+    <bpmn:laneSet id="Lanes_TuCach">
+      <bpmn:lane id="L_TuCach_1" name="Chủ tịch HĐQT">
+        <bpmn:flowNodeRef>B23</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="L_TuCach_2" name="Thư ký cuộc họp">
+        <bpmn:flowNodeRef>S3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>B21</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>C3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>B22</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>B24</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>C4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>B25</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>B26</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>M4</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>M3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Z4</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:startEvent id="S3" name="Cách tham dự của thành viên đã được khai báo">
+      <bpmn:outgoing>F_S3_B21</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="B21" name="Kiểm tra cách thành viên tham dự và biểu quyết">
+      <bpmn:incoming>F_S3_B21</bpmn:incoming>
+      <bpmn:outgoing>F_B21_C3</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="C3" name="Cách dự họp?">
+      <bpmn:incoming>F_B21_C3</bpmn:incoming>
+      <bpmn:outgoing>F_C3_B22</bpmn:outgoing>
+      <bpmn:outgoing>F_C3_B23</bpmn:outgoing>
+      <bpmn:outgoing>F_C3_B24</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="B23" name="Tiếp nhận phiếu biểu quyết gửi đến cuộc họp">
+      <bpmn:incoming>F_C3_B23</bpmn:incoming>
+      <bpmn:outgoing>F_B23_M3</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="B22" name="Ghi nhận thành viên tham dự trực tiếp hoặc qua phương tiện điện tử">
+      <bpmn:incoming>F_C3_B22</bpmn:incoming>
+      <bpmn:outgoing>F_B22_M3</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="B24" name="Kiểm tra chấp thuận của HĐQT đối với ủy quyền dự họp">
+      <bpmn:incoming>F_C3_B24</bpmn:incoming>
+      <bpmn:outgoing>F_B24_C4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="C4" name="Đa số chấp thuận ủy quyền?">
+      <bpmn:incoming>F_B24_C4</bpmn:incoming>
+      <bpmn:outgoing>F_C4_B25</bpmn:outgoing>
+      <bpmn:outgoing>F_C4_B26</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="B25" name="Ghi tư cách dự họp và biểu quyết theo ủy quyền">
+      <bpmn:incoming>F_C4_B25</bpmn:incoming>
+      <bpmn:outgoing>F_B25_M4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="B26" name="Ghi tình trạng ủy quyền chưa đủ điều kiện">
+      <bpmn:incoming>F_C4_B26</bpmn:incoming>
+      <bpmn:outgoing>F_B26_M4</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:exclusiveGateway id="M4" name="Tư cách theo ủy quyền đã được xét">
+      <bpmn:incoming>F_B25_M4</bpmn:incoming>
+      <bpmn:incoming>F_B26_M4</bpmn:incoming>
+      <bpmn:outgoing>F_M4_M3</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="M3" name="Cách tham dự của thành viên đã được ghi nhận">
+      <bpmn:incoming>F_B22_M3</bpmn:incoming>
+      <bpmn:incoming>F_B23_M3</bpmn:incoming>
+      <bpmn:incoming>F_M4_M3</bpmn:incoming>
+      <bpmn:outgoing>F_M3_Z4</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="Z4" name="Tư cách dự họp của thành viên đã được ghi nhận">
+      <bpmn:incoming>F_M3_Z4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_S3_B21" sourceRef="S3" targetRef="B21" />
+    <bpmn:sequenceFlow id="F_B21_C3" sourceRef="B21" targetRef="C3" />
+    <bpmn:sequenceFlow id="F_C3_B22" name="Trực tiếp hoặc điện tử" sourceRef="C3" targetRef="B22">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Trực tiếp hoặc điện tử</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_C3_B23" name="Gửi phiếu từ xa" sourceRef="C3" targetRef="B23">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Gửi phiếu từ xa</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_C3_B24" name="Dự qua ủy quyền" sourceRef="C3" targetRef="B24">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Dự qua ủy quyền</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_B24_C4" sourceRef="B24" targetRef="C4" />
+    <bpmn:sequenceFlow id="F_C4_B25" name="Đa số đồng ý" sourceRef="C4" targetRef="B25">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Đa số đồng ý</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_C4_B26" name="Chưa đủ đa số" sourceRef="C4" targetRef="B26">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">Chưa đủ đa số</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="F_B25_M4" sourceRef="B25" targetRef="M4" />
+    <bpmn:sequenceFlow id="F_B26_M4" sourceRef="B26" targetRef="M4" />
+    <bpmn:sequenceFlow id="F_B22_M3" sourceRef="B22" targetRef="M3" />
+    <bpmn:sequenceFlow id="F_B23_M3" sourceRef="B23" targetRef="M3" />
+    <bpmn:sequenceFlow id="F_M4_M3" sourceRef="M4" targetRef="M3" />
+    <bpmn:sequenceFlow id="F_M3_Z4" sourceRef="M3" targetRef="Z4" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="Diagram_QL2">
+    <bpmndi:BPMNPlane id="Plane_QL2" bpmnElement="QL2">
+      <bpmndi:BPMNShape id="P_Hang_di" bpmnElement="P_Hang" isHorizontal="true">
+        <dc:Bounds x="0" y="0" width="1510" height="2000" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L_ThanhVien_di" bpmnElement="L_ThanhVien" isHorizontal="true">
+        <dc:Bounds x="30" y="0" width="1480" height="590" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L_ChuTich_di" bpmnElement="L_ChuTich" isHorizontal="true">
+        <dc:Bounds x="30" y="590" width="1480" height="570" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L_ThuKy_di" bpmnElement="L_ThuKy" isHorizontal="true">
+        <dc:Bounds x="30" y="1160" width="1480" height="840" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S_di" bpmnElement="S">
+        <dc:Bounds x="162" y="127" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="69" y="175" width="222" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B1_di" bpmnElement="B1">
+        <dc:Bounds x="298" y="68" width="224" height="154" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="C9_di" bpmnElement="C9" isMarkerVisible="true">
+        <dc:Bounds x="640" y="120" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="522.5" y="34" width="285" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B38_di" bpmnElement="B38">
+        <dc:Bounds x="813" y="248" width="224" height="154" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="M9_di" bpmnElement="M9" isMarkerVisible="true">
+        <dc:Bounds x="1095" y="120" width="50" height="50" />
+        <bpmndi:BPMNLabel color:color="transparent">
+          <dc:Bounds x="20" y="10" width="60" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B2_di" bpmnElement="B2" isExpanded="false">
+        <dc:Bounds x="128" y="639" width="224" height="182" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="C2_di" bpmnElement="C2" isMarkerVisible="true">
+        <dc:Bounds x="460" y="705" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="301" y="600" width="186" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B5_di" bpmnElement="B5">
+        <dc:Bounds x="691" y="423" width="248" height="154" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="M2_di" bpmnElement="M2" isMarkerVisible="true">
+        <dc:Bounds x="980" y="705" width="50" height="50" />
+        <bpmndi:BPMNLabel color:color="transparent">
+          <dc:Bounds x="20" y="10" width="60" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="K5_di" bpmnElement="K5">
+        <dc:Bounds x="772" y="847" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="630" y="895" width="320" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B6_di" bpmnElement="B6" isExpanded="false">
+        <dc:Bounds x="116" y="1184" width="218" height="182" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="D1_di" bpmnElement="D1" isMarkerVisible="true">
+        <dc:Bounds x="410" y="1250" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="348" y="1178" width="192" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B7_di" bpmnElement="B7">
+        <dc:Bounds x="558" y="1198" width="204" height="154" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="C7_di" bpmnElement="C7" isMarkerVisible="true">
+        <dc:Bounds x="840" y="1250" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="878" y="1173" width="226" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B10_di" bpmnElement="B10">
+        <dc:Bounds x="948" y="1003" width="234" height="154" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B8_di" bpmnElement="B8">
+        <dc:Bounds x="948" y="1418" width="234" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="M7_di" bpmnElement="M7" isMarkerVisible="true">
+        <dc:Bounds x="1255" y="1250" width="50" height="50" />
+        <bpmndi:BPMNLabel color:color="transparent">
+          <dc:Bounds x="20" y="10" width="60" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="K3_di" bpmnElement="K3">
+        <dc:Bounds x="612" y="1407" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="480" y="1455" width="300" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B11_di" bpmnElement="B11" isExpanded="false">
+        <dc:Bounds x="111" y="1629" width="228" height="182" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="D2_di" bpmnElement="D2" isMarkerVisible="true">
+        <dc:Bounds x="455" y="1695" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="344" y="1588" width="310" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="K2_di" bpmnElement="K2">
+        <dc:Bounds x="954" y="1702" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="816" y="1750" width="312" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="K4_di" bpmnElement="K4">
+        <dc:Bounds x="817" y="1862" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="694" y="1910" width="282" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B12_di" bpmnElement="B12">
+        <dc:Bounds x="1212" y="884" width="236" height="132" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="D3_di" bpmnElement="D3" isMarkerVisible="true">
+        <dc:Bounds x="1305" y="685" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1333.5" y="747" width="173" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="K1a_di" bpmnElement="K1a">
+        <dc:Bounds x="1327" y="410" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1221" y="458" width="248" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="K1b_di" bpmnElement="K1b">
+        <dc:Bounds x="1307" y="177" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1195.5" y="225" width="259" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="F_S_B1_di" bpmnElement="F_S_B1">
+        <di:waypoint x="198" y="145" />
+        <di:waypoint x="298" y="145" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B1_C9_di" bpmnElement="F_B1_C9">
+        <di:waypoint x="522" y="145" />
+        <di:waypoint x="640" y="145" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C9_M9_di" bpmnElement="F_C9_M9">
+        <di:waypoint x="690" y="145" />
+        <di:waypoint x="1095" y="145" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="790" y="93" width="210" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C9_B38_di" bpmnElement="F_C9_B38">
+        <di:waypoint x="665" y="170" />
+        <di:waypoint x="665" y="325" />
+        <di:waypoint x="813" y="325" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="652" y="244" width="164" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B38_M9_di" bpmnElement="F_B38_M9">
+        <di:waypoint x="1037" y="325" />
+        <di:waypoint x="1120" y="325" />
+        <di:waypoint x="1120" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_M9_B2_di" bpmnElement="F_M9_B2">
+        <di:waypoint x="1145" y="145" />
+        <di:waypoint x="1166" y="145" />
+        <di:waypoint x="1166" y="416" />
+        <di:waypoint x="240" y="416" />
+        <di:waypoint x="240" y="639" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B2_C2_di" bpmnElement="F_B2_C2">
+        <di:waypoint x="352" y="730" />
+        <di:waypoint x="460" y="730" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C2_M2_di" bpmnElement="F_C2_M2">
+        <di:waypoint x="510" y="730" />
+        <di:waypoint x="980" y="730" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="629" y="680" width="252" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C2_B5_di" bpmnElement="F_C2_B5">
+        <di:waypoint x="485" y="705" />
+        <di:waypoint x="485" y="500" />
+        <di:waypoint x="691" y="500" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="493.5" y="512" width="179" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B5_M2_di" bpmnElement="F_B5_M2">
+        <di:waypoint x="939" y="500" />
+        <di:waypoint x="1005" y="500" />
+        <di:waypoint x="1005" y="705" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C2_K5_di" bpmnElement="F_C2_K5">
+        <di:waypoint x="485" y="755" />
+        <di:waypoint x="485" y="865" />
+        <di:waypoint x="772" y="865" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="507.5" y="774" width="271" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_M2_B6_di" bpmnElement="F_M2_B6">
+        <di:waypoint x="1030" y="730" />
+        <di:waypoint x="1135" y="730" />
+        <di:waypoint x="1135" y="985" />
+        <di:waypoint x="225" y="985" />
+        <di:waypoint x="225" y="1184" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B6_D1_di" bpmnElement="F_B6_D1">
+        <di:waypoint x="334" y="1275" />
+        <di:waypoint x="410" y="1275" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_D1_B7_di" bpmnElement="F_D1_B7">
+        <di:waypoint x="460" y="1275" />
+        <di:waypoint x="558" y="1275" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="466" y="1289" width="80" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_D1_K3_di" bpmnElement="F_D1_K3">
+        <di:waypoint x="435" y="1300" />
+        <di:waypoint x="435" y="1425" />
+        <di:waypoint x="612" y="1425" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="437.5" y="1374" width="187" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B7_C7_di" bpmnElement="F_B7_C7">
+        <di:waypoint x="762" y="1275" />
+        <di:waypoint x="840" y="1275" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C7_B10_di" bpmnElement="F_C7_B10">
+        <di:waypoint x="865" y="1250" />
+        <di:waypoint x="865" y="1080" />
+        <di:waypoint x="948" y="1080" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="658.5" y="1031" width="191" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C7_B8_di" bpmnElement="F_C7_B8">
+        <di:waypoint x="865" y="1300" />
+        <di:waypoint x="865" y="1478" />
+        <di:waypoint x="948" y="1478" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="693.5" y="1378" width="163" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C7_M7_di" bpmnElement="F_C7_M7">
+        <di:waypoint x="890" y="1275" />
+        <di:waypoint x="1255" y="1275" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1099" y="1201" width="162" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B10_M7_di" bpmnElement="F_B10_M7">
+        <di:waypoint x="1182" y="1080" />
+        <di:waypoint x="1280" y="1080" />
+        <di:waypoint x="1280" y="1250" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B8_M7_di" bpmnElement="F_B8_M7">
+        <di:waypoint x="1182" y="1478" />
+        <di:waypoint x="1280" y="1478" />
+        <di:waypoint x="1280" y="1300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_M7_B11_di" bpmnElement="F_M7_B11">
+        <di:waypoint x="1305" y="1275" />
+        <di:waypoint x="1350" y="1275" />
+        <di:waypoint x="1350" y="1572" />
+        <di:waypoint x="225" y="1572" />
+        <di:waypoint x="225" y="1629" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B11_D2_di" bpmnElement="F_B11_D2">
+        <di:waypoint x="339" y="1720" />
+        <di:waypoint x="455" y="1720" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_D2_K2_di" bpmnElement="F_D2_K2">
+        <di:waypoint x="505" y="1720" />
+        <di:waypoint x="954" y="1720" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="528" y="1682" width="424" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_D2_K4_di" bpmnElement="F_D2_K4">
+        <di:waypoint x="480" y="1745" />
+        <di:waypoint x="480" y="1880" />
+        <di:waypoint x="817" y="1880" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="513" y="1828" width="290" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_D2_B12_di" bpmnElement="F_D2_B12">
+        <di:waypoint x="480" y="1695" />
+        <di:waypoint x="480" y="1659" />
+        <di:waypoint x="1460" y="1659" />
+        <di:waypoint x="1460" y="1113" />
+        <di:waypoint x="1330" y="1113" />
+        <di:waypoint x="1330" y="1016" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="853" y="1604" width="522" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B12_D3_di" bpmnElement="F_B12_D3">
+        <di:waypoint x="1330" y="884" />
+        <di:waypoint x="1330" y="735" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_D3_K1a_di" bpmnElement="F_D3_K1a">
+        <di:waypoint x="1305" y="710" />
+        <di:waypoint x="1159" y="710" />
+        <di:waypoint x="1159" y="492" />
+        <di:waypoint x="1194" y="492" />
+        <di:waypoint x="1194" y="386" />
+        <di:waypoint x="1345" y="386" />
+        <di:waypoint x="1345" y="410" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1166" y="625" width="148" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_D3_K1b_di" bpmnElement="F_D3_K1b">
+        <di:waypoint x="1355" y="710" />
+        <di:waypoint x="1500" y="710" />
+        <di:waypoint x="1500" y="195" />
+        <di:waypoint x="1343" y="195" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1344" y="625" width="150" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Diagram_B2">
+    <bpmndi:BPMNPlane id="Plane_B2" bpmnElement="B2">
+      <bpmndi:BPMNShape id="L_B2_1_di" bpmnElement="L_B2_1" isHorizontal="true">
+        <dc:Bounds x="0" y="0" width="1530" height="790" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L_B2_2_di" bpmnElement="L_B2_2" isHorizontal="true">
+        <dc:Bounds x="0" y="790" width="1530" height="530" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S1_di" bpmnElement="S1">
+        <dc:Bounds x="121" y="328" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="56" y="376" width="166" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B13_di" bpmnElement="B13">
+        <dc:Bounds x="230" y="263" width="240" height="166" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="C1_di" bpmnElement="C1" isMarkerVisible="true">
+        <dc:Bounds x="550" y="321" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="319" y="185" width="242" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B14_di" bpmnElement="B14">
+        <dc:Bounds x="735" y="269" width="230" height="154" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B15_di" bpmnElement="B15">
+        <dc:Bounds x="731" y="68" width="238" height="154" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B16_di" bpmnElement="B16">
+        <dc:Bounds x="735" y="987" width="230" height="126" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="M1_di" bpmnElement="M1" isMarkerVisible="true">
+        <dc:Bounds x="1022" y="321" width="50" height="50" />
+        <bpmndi:BPMNLabel color:color="transparent">
+          <dc:Bounds x="20" y="10" width="60" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B35_di" bpmnElement="B35">
+        <dc:Bounds x="1138" y="269" width="224" height="154" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Z1_di" bpmnElement="Z1">
+        <dc:Bounds x="1232" y="512" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1075" y="560" width="350" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="F_S1_B13_di" bpmnElement="F_S1_B13">
+        <di:waypoint x="157" y="346" />
+        <di:waypoint x="230" y="346" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B13_C1_di" bpmnElement="F_B13_C1">
+        <di:waypoint x="470" y="346" />
+        <di:waypoint x="550" y="346" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C1_B14_di" bpmnElement="F_C1_B14">
+        <di:waypoint x="600" y="346" />
+        <di:waypoint x="735" y="346" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="600" y="268" width="120" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C1_B15_di" bpmnElement="F_C1_B15">
+        <di:waypoint x="575" y="321" />
+        <di:waypoint x="575" y="145" />
+        <di:waypoint x="731" y="145" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="530.5" y="52" width="185" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C1_B16_di" bpmnElement="F_C1_B16">
+        <di:waypoint x="575" y="371" />
+        <di:waypoint x="575" y="1050" />
+        <di:waypoint x="735" y="1050" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="586.5" y="894" width="175" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B14_M1_di" bpmnElement="F_B14_M1">
+        <di:waypoint x="965" y="346" />
+        <di:waypoint x="1022" y="346" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B15_M1_di" bpmnElement="F_B15_M1">
+        <di:waypoint x="969" y="145" />
+        <di:waypoint x="1047" y="145" />
+        <di:waypoint x="1047" y="321" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B16_M1_di" bpmnElement="F_B16_M1">
+        <di:waypoint x="965" y="1050" />
+        <di:waypoint x="1047" y="1050" />
+        <di:waypoint x="1047" y="371" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_M1_B35_di" bpmnElement="F_M1_B35">
+        <di:waypoint x="1072" y="346" />
+        <di:waypoint x="1138" y="346" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B35_Z1_di" bpmnElement="F_B35_Z1">
+        <di:waypoint x="1250" y="423" />
+        <di:waypoint x="1250" y="512" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Diagram_B6">
+    <bpmndi:BPMNPlane id="Plane_B6" bpmnElement="B6">
+      <bpmndi:BPMNShape id="L_B6_1_di" bpmnElement="L_B6_1" isHorizontal="true">
+        <dc:Bounds x="0" y="0" width="1520" height="500" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L_B6_2_di" bpmnElement="L_B6_2" isHorizontal="true">
+        <dc:Bounds x="0" y="500" width="1520" height="320" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S2_di" bpmnElement="S2">
+        <dc:Bounds x="119" y="632" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="55" y="680" width="164" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B17_di" bpmnElement="B17" isExpanded="false">
+        <dc:Bounds x="225" y="558" width="230" height="184" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B19_di" bpmnElement="B19" isExpanded="false">
+        <dc:Bounds x="715" y="563" width="246" height="174" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B18_di" bpmnElement="B18">
+        <dc:Bounds x="726" y="260" width="224" height="154" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B20_di" bpmnElement="B20">
+        <dc:Bounds x="720" y="49" width="237" height="154" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B34_di" bpmnElement="B34">
+        <dc:Bounds x="1075" y="260" width="230" height="154" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="C5_di" bpmnElement="C5" isMarkerVisible="true">
+        <dc:Bounds x="543" y="625" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="337" y="512" width="210" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="C6_di" bpmnElement="C6" isMarkerVisible="true">
+        <dc:Bounds x="1065" y="625" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1113.5" y="535" width="233" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Z2a_di" bpmnElement="Z2a">
+        <dc:Bounds x="1112" y="108" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="965" y="156" width="330" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Z2b_di" bpmnElement="Z2b">
+        <dc:Bounds x="1389" y="319" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1309" y="367" width="196" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Z3_di" bpmnElement="Z3">
+        <dc:Bounds x="1362" y="632" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1257" y="680" width="246" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="F_S2_B17_di" bpmnElement="F_S2_B17">
+        <di:waypoint x="155" y="650" />
+        <di:waypoint x="225" y="650" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B17_C5_di" bpmnElement="F_B17_C5">
+        <di:waypoint x="455" y="650" />
+        <di:waypoint x="543" y="650" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C5_B20_di" bpmnElement="F_C5_B20">
+        <di:waypoint x="568" y="625" />
+        <di:waypoint x="568" y="126" />
+        <di:waypoint x="720" y="126" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="589" y="71" width="132" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C5_B18_di" bpmnElement="F_C5_B18">
+        <di:waypoint x="593" y="650" />
+        <di:waypoint x="661" y="650" />
+        <di:waypoint x="661" y="337" />
+        <di:waypoint x="726" y="337" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="580" y="278" width="132" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B20_Z2a_di" bpmnElement="F_B20_Z2a">
+        <di:waypoint x="957" y="126" />
+        <di:waypoint x="1112" y="126" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B18_B19_di" bpmnElement="F_B18_B19">
+        <di:waypoint x="838" y="414" />
+        <di:waypoint x="838" y="563" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B19_C6_di" bpmnElement="F_B19_C6">
+        <di:waypoint x="961" y="650" />
+        <di:waypoint x="1065" y="650" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C6_B34_di" bpmnElement="F_C6_B34">
+        <di:waypoint x="1090" y="625" />
+        <di:waypoint x="1090" y="495" />
+        <di:waypoint x="1045" y="495" />
+        <di:waypoint x="1045" y="337" />
+        <di:waypoint x="1075" y="337" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="897" y="507" width="180" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C6_Z3_di" bpmnElement="F_C6_Z3">
+        <di:waypoint x="1115" y="650" />
+        <di:waypoint x="1362" y="650" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1019" y="698" width="232" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B34_Z2b_di" bpmnElement="F_B34_Z2b">
+        <di:waypoint x="1305" y="337" />
+        <di:waypoint x="1389" y="337" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Diagram_TuCach">
+    <bpmndi:BPMNPlane id="Plane_TuCach" bpmnElement="Process_TuCach">
+      <bpmndi:BPMNShape id="L_TuCach_1_di" bpmnElement="L_TuCach_1" isHorizontal="true">
+        <dc:Bounds x="0" y="0" width="1540" height="226" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="L_TuCach_2_di" bpmnElement="L_TuCach_2" isHorizontal="true">
+        <dc:Bounds x="0" y="226" width="1540" height="709" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S3_di" bpmnElement="S3">
+        <dc:Bounds x="122" y="347" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="56" y="395" width="168" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B21_di" bpmnElement="B21">
+        <dc:Bounds x="231" y="288" width="224" height="154" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="C3_di" bpmnElement="C3" isMarkerVisible="true">
+        <dc:Bounds x="540" y="340" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="332.5" y="241" width="223" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B23_di" bpmnElement="B23">
+        <dc:Bounds x="713" y="49" width="224" height="154" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B22_di" bpmnElement="B22">
+        <dc:Bounds x="753" y="271" width="254" height="188" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B24_di" bpmnElement="B24">
+        <dc:Bounds x="674" y="523" width="236" height="188" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="C4_di" bpmnElement="C4" isMarkerVisible="true">
+        <dc:Bounds x="981" y="592" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="862" y="468" width="240" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B25_di" bpmnElement="B25">
+        <dc:Bounds x="1151" y="523" width="209" height="188" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B26_di" bpmnElement="B26">
+        <dc:Bounds x="1143" y="763" width="224" height="128" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="M4_di" bpmnElement="M4" isMarkerVisible="true">
+        <dc:Bounds x="1415" y="592" width="50" height="50" />
+        <bpmndi:BPMNLabel color:color="transparent">
+          <dc:Bounds x="20" y="10" width="60" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="M3_di" bpmnElement="M3" isMarkerVisible="true">
+        <dc:Bounds x="1165" y="340" width="50" height="50" />
+        <bpmndi:BPMNLabel color:color="transparent">
+          <dc:Bounds x="20" y="10" width="60" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Z4_di" bpmnElement="Z4">
+        <dc:Bounds x="1367" y="347" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1250" y="236" width="270" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="F_S3_B21_di" bpmnElement="F_S3_B21">
+        <di:waypoint x="158" y="365" />
+        <di:waypoint x="231" y="365" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B21_C3_di" bpmnElement="F_B21_C3">
+        <di:waypoint x="455" y="365" />
+        <di:waypoint x="540" y="365" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C3_B22_di" bpmnElement="F_C3_B22">
+        <di:waypoint x="590" y="365" />
+        <di:waypoint x="753" y="365" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="581.5" y="250" width="151" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C3_B23_di" bpmnElement="F_C3_B23">
+        <di:waypoint x="565" y="340" />
+        <di:waypoint x="565" y="126" />
+        <di:waypoint x="713" y="126" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="546.5" y="37" width="147" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C3_B24_di" bpmnElement="F_C3_B24">
+        <di:waypoint x="565" y="390" />
+        <di:waypoint x="565" y="617" />
+        <di:waypoint x="674" y="617" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="509" y="638" width="144" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B24_C4_di" bpmnElement="F_B24_C4">
+        <di:waypoint x="910" y="617" />
+        <di:waypoint x="981" y="617" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C4_B25_di" bpmnElement="F_C4_B25">
+        <di:waypoint x="1031" y="617" />
+        <di:waypoint x="1151" y="617" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1014" y="541" width="134" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C4_B26_di" bpmnElement="F_C4_B26">
+        <di:waypoint x="1006" y="642" />
+        <di:waypoint x="1006" y="827" />
+        <di:waypoint x="1143" y="827" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="991" y="845" width="122" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B25_M4_di" bpmnElement="F_B25_M4">
+        <di:waypoint x="1360" y="617" />
+        <di:waypoint x="1415" y="617" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B26_M4_di" bpmnElement="F_B26_M4">
+        <di:waypoint x="1367" y="827" />
+        <di:waypoint x="1440" y="827" />
+        <di:waypoint x="1440" y="642" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B22_M3_di" bpmnElement="F_B22_M3">
+        <di:waypoint x="1007" y="365" />
+        <di:waypoint x="1165" y="365" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B23_M3_di" bpmnElement="F_B23_M3">
+        <di:waypoint x="937" y="126" />
+        <di:waypoint x="1190" y="126" />
+        <di:waypoint x="1190" y="340" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_M4_M3_di" bpmnElement="F_M4_M3">
+        <di:waypoint x="1465" y="617" />
+        <di:waypoint x="1504" y="617" />
+        <di:waypoint x="1504" y="470" />
+        <di:waypoint x="1190" y="470" />
+        <di:waypoint x="1190" y="390" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_M3_Z4_di" bpmnElement="F_M3_Z4">
+        <di:waypoint x="1215" y="365" />
+        <di:waypoint x="1367" y="365" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+  <bpmndi:BPMNDiagram id="Diagram_B11">
+    <bpmndi:BPMNPlane id="Plane_B11" bpmnElement="B11">
+      <bpmndi:BPMNShape id="L_B11_1_di" bpmnElement="L_B11_1" isHorizontal="true">
+        <dc:Bounds x="0" y="0" width="1550" height="792" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="S4_di" bpmnElement="S4">
+        <dc:Bounds x="121" y="269" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="55" y="317" width="168" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B27_di" bpmnElement="B27">
+        <dc:Bounds x="231" y="210" width="224" height="154" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="C8_di" bpmnElement="C8" isMarkerVisible="true">
+        <dc:Bounds x="528" y="262" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="420" y="128" width="278" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B28_di" bpmnElement="B28">
+        <dc:Bounds x="720" y="210" width="232" height="154" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B29_di" bpmnElement="B29">
+        <dc:Bounds x="714" y="412" width="245" height="154" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="M8_di" bpmnElement="M8" isMarkerVisible="true">
+        <dc:Bounds x="1015" y="262" width="50" height="50" />
+        <bpmndi:BPMNLabel color:color="transparent">
+          <dc:Bounds x="20" y="10" width="60" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="B33_di" bpmnElement="B33">
+        <dc:Bounds x="1148" y="210" width="224" height="154" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="D7_di" bpmnElement="D7" isMarkerVisible="true">
+        <dc:Bounds x="1235" y="450" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1056.5" y="385" width="169" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Z5_di" bpmnElement="Z5">
+        <dc:Bounds x="1042" y="629" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="919" y="677" width="282" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Z5b_di" bpmnElement="Z5b">
+        <dc:Bounds x="1390" y="629" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1275.5" y="677" width="265" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="F_S4_B27_di" bpmnElement="F_S4_B27">
+        <di:waypoint x="157" y="287" />
+        <di:waypoint x="231" y="287" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B27_C8_di" bpmnElement="F_B27_C8">
+        <di:waypoint x="455" y="287" />
+        <di:waypoint x="528" y="287" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C8_B28_di" bpmnElement="F_C8_B28">
+        <di:waypoint x="578" y="287" />
+        <di:waypoint x="720" y="287" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="574.5" y="234" width="139" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_C8_B29_di" bpmnElement="F_C8_B29">
+        <di:waypoint x="553" y="312" />
+        <di:waypoint x="553" y="489" />
+        <di:waypoint x="714" y="489" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="548" y="510" width="146" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B28_M8_di" bpmnElement="F_B28_M8">
+        <di:waypoint x="952" y="287" />
+        <di:waypoint x="1015" y="287" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B29_M8_di" bpmnElement="F_B29_M8">
+        <di:waypoint x="959" y="489" />
+        <di:waypoint x="1040" y="489" />
+        <di:waypoint x="1040" y="312" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_M8_B33_di" bpmnElement="F_M8_B33">
+        <di:waypoint x="1065" y="287" />
+        <di:waypoint x="1148" y="287" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_B33_D7_di" bpmnElement="F_B33_D7">
+        <di:waypoint x="1260" y="364" />
+        <di:waypoint x="1260" y="450" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_D7_Z5_di" bpmnElement="F_D7_Z5">
+        <di:waypoint x="1260" y="500" />
+        <di:waypoint x="1260" y="592" />
+        <di:waypoint x="1060" y="592" />
+        <di:waypoint x="1060" y="629" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1023.5" y="540" width="245" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_D7_Z5b_di" bpmnElement="F_D7_Z5b">
+        <di:waypoint x="1285" y="475" />
+        <di:waypoint x="1408" y="475" />
+        <di:waypoint x="1408" y="629" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1282" y="389" width="210" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
